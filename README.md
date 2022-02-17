@@ -6,14 +6,14 @@ BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, no
 
 * [Installation](#installation)
 * [Quick start / Tutorial](#quick-start)
-    + [Cross modality](#dabc-net-for-desktop-app) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
-    + [Cross field strength](#dabc-net-for-desktop-app) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
-    + [Cross species](#dabc-net-for-colab)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
+    + [Cross modality](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
+    + [Cross field strength](#cross-field-strength) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
+    + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
     + [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
 
 + [Other feature](#other-feature)
-    + [Semi-supervised leaning]
-    + [Quality assessment]
+    + [Semi-supervised leaning](#semi-supervised-leaning)
+    + [Quality assessment](#quality-assessment)
 
 * [Data release](#data-release)
 * [Notes](#Notes)
@@ -42,8 +42,8 @@ The project folder looks like this:
 
 ```
 path
-│  BEN_tutorial_Ⅱ.py
 │  BEN_tutorial_Ⅰ.py
+│  BEN_tutorial_Ⅱ.py
 │  README.md
 │
 ├─weight
@@ -111,14 +111,14 @@ path
 
 ## Interface for neruoimaging toolboxes
 
-| Feature                    | Link                             |
-|----------------------------|----------------------------------|
-| AFNI                       | afni.nimh.nih.gov/afni           |
-| ANTs                       | stnava.github.io/ANTs/           |
-| FSL                        | fsl.fmrib.ox.ac.uk/fsl/fslwiki   |
-| FreeSurfer                 | freesurfer.net                   |
-| SPM                        | fil.ion.ucl.ac.uk/spm            |
-| Nipype                     | pypi.org/project/nipype/         |
+| Name       | Link                             |
+|------------|----------------------------------|
+| AFNI       | afni.nimh.nih.gov/afni           |
+| ANTs       | stnava.github.io/ANTs/           |
+| FSL        | fsl.fmrib.ox.ac.uk/fsl/fslwiki   |
+| FreeSurfer | freesurfer.net                   |
+| SPM        | fil.ion.ucl.ac.uk/spm            |
+| Nipype     | pypi.org/project/nipype/         |
 
 (coming soon ...)
 
