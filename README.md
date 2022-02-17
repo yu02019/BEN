@@ -76,6 +76,9 @@ path
 
 ## Quick Start
 
+* All the undermentioned results can be repeated via our tutorial Notebook.
+* New weight will be saved independently for further customized application.
+
 ### Cross modality
 
 #### Results:
