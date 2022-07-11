@@ -2,6 +2,43 @@
 
 BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, nonhuman primates, and humans
 
+### [Paper](link) | [Demo]() | [MRI data release]() | [Pretrained weight]() | [Contents]()
+
+![](fig/BEN-workflow.png)
+
+## Overview
+🚀 Quick start to use BEN or replicate our experiments in 5 minutes!
+
+
+
+### Code | replicate demo
+
+
+| Name                                                    | Description                                                                                                                                                   | Related Fig.<br/> in paper | Snapshot                                                                                                  | Colab link                                                                                                                                                          |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. BEN workflow & architecture                          | BEN renovates the brain extraction workflow to adapt to multiple species, modalities and platforms                                                            | Fig. 1 & 2                 | <img src="./fig/BEN.png" width = "110" height = "120" alt="Snapshot on Win" align=center />               | This repo                                                                                                                                                           |
+| ✨ 2. Cross species task                                 | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. 3                     | <img src="./fig/cross-species-post.png" width = "150" height = "74" alt="Snapshot on Win" align=center /> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing) |
+| 3. Cross modality / platform                            | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. S1 & S2               | <img src="./fig/cross-field.png" width = "150" height = "74" alt="Snapshot on Win" align=center />        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing) |
+| 4. Compare with other toolbox                           | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from various domains across multiple species, modalities, and field strengths. | Fig. 4                     | <img src="./fig/fig4.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HgHgqli-mVuIj9QolJ85KEB8LJcgN5qh?usp=sharing) |
+| 5. Uncertainty & inter-rater variations                 | BEN provides a measure of uncertainty that potentially reflects rater disagreement                                                                            | Fig. 5                     | <img src="./fig/fig5.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               |                                                                                                                                                                     |
+| ✨ 6. Volumetric quantification for longitudinal studies | BEN improves the accuracy of atlas registration and benefits brain volumetric quantification compared with using other toolbox.                               | Fig. 6 & 7                 | <img src="./fig/fig7.png" width = "150" height = "44" alt="Snapshot on Win" align=center />               |                                                                                                                                                                     |
+
+
+
+### Feature | replicate demo
+
+
+| Feature            | Description | Snapshot | Colab link |
+|--------------------|-------------|----------|------------|
+| Transferability    |             |          |            |
+| Quality assessment |             |          |            |
+| Speed              |             |          |            |
+
+### MRI data release | pretrained weight
+
+The detail 
+
+
 ## Table of Contents
 
 * [Installation](#installation)
@@ -9,6 +46,7 @@ BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, no
     + [Cross modality](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
     + [Cross field strength](#cross-field-strength) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
     + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
+    + [Try your data](#try-your-data) 
     + [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
 
 + [Other feature](#other-feature)
@@ -40,39 +78,7 @@ pip install -r requirement.txt
 
 The project folder looks like this:
 
-```
-path
-│  BEN_tutorial_Ⅰ.py
-│  BEN_tutorial_Ⅱ.py
-│  README.md
-│
-├─weight
-│  ├─unet_fp32_all_BN_NoCenterScale_polyic_epoch15_bottle256_04012056
-│  └─unet_fp32_all_BN_NoCenterScale_polyic_epoch15_bottle256_04012051
-│
-├─data  (Path for target domain data. Download data from this repository or put your data here.)
-│  ├─rat
-│  │  ├─src
-│  │  │      xxx.nii.gz
-│  │  │
-│  │  ├─label
-│  │  └─     xxx.nii.gz
-│  │
-│  ├─epi
-│  │  ├─src
-│  │  └─     xxx.nii.gz
-│  │
-│  └─7T
-│      ├─src
-│      └─    xxx.nii.gz
-│
-├─utils
-│
-├─model
-│
-└─fig
-
-```
+![](fig/folder_tree.png)
 
 ## Quick Start
 
