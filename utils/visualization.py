@@ -20,7 +20,7 @@ def load_slice_cross_species(raw_path='', zeroshot_path='', ft_path='', DA_path=
     :param disp_num:
     :return:
     """
-    os.chdir(r'G:\\2020_01_17\\G\\gmycode\\unet-BET_pm2.5\\unet-github')  # for debug only
+    # os.chdir(r'G:\\2020_01_17\\G\\gmycode\\unet-BET_pm2.5\\unet-github')  # for debug only
     raw = glob(raw_path + '/*');
     raw.sort()
     zeroshot = glob(zeroshot_path + '/*');
@@ -60,7 +60,7 @@ def load_slice(raw_path='', zeroshot_path='', DA_path='', scans_num=0, disp_num=
     :param disp_num:
     :return:
     """
-    os.chdir(r'G:\\2020_01_17\\G\\gmycode\\unet-BET_pm2.5\\unet-github')  # for debug only
+    # os.chdir(r'G:\\2020_01_17\\G\\gmycode\\unet-BET_pm2.5\\unet-github')  # for debug only
     raw = glob(raw_path + '/*');
     raw.sort()
     zeroshot = glob(zeroshot_path + '/*');
