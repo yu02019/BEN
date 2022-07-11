@@ -3,7 +3,7 @@ import os
 import numpy as np
 from glob import glob
 from utils.load_data import get_itk_array
-from myutils.transparent_imshow import transp_imshow
+from utils.transparent_imshow import transp_imshow
 import matplotlib.pyplot as plt
 
 
