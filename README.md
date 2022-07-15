@@ -2,7 +2,7 @@
 
 BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, nonhuman primates, and humans
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo ) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Contents](#table-of-contents)
+### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contents](#table-of-contents)
 
 ![](fig/BEN-workflow.png)
 
@@ -22,14 +22,14 @@ BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, no
 ### Replicate demo
 
 
-| Name                                                    | Description                                                                                                                                                   | Related Fig.<br/> in paper | Snapshot                                                                                                  | Colab link                                                                                                                                                                                                                                                                                                                                                                   |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1. BEN workflow & architecture                          | BEN renovates the brain extraction workflow to adapt to multiple species, modalities and platforms                                                            | Fig. 1 & 2                 | <img src="./fig/BEN.png" width = "110" height = "120" alt="Snapshot on Win" align=center />               | This repo                                                                                                                                                                                                                                                                                                                                                                    |
-| 2. ✨ Cross species task                                 | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. 3                     | <img src="./fig/cross-species-post.png" width = "150" height = "74" alt="Snapshot on Win" align=center /> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)                                                                                                                                                                                                          |
-| 3. Cross modality / platform                            | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. S1 & S2               | <img src="./fig/cross-field.png" width = "150" height = "74" alt="Snapshot on Win" align=center />        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)                                                                                                                                                                                                          |
-| 4. Compare with other toolbox                           | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from various domains across multiple species, modalities, and field strengths. | Fig. 4                     | <img src="./fig/Fig4.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HgHgqli-mVuIj9QolJ85KEB8LJcgN5qh?usp=sharing)                                                                                                                                                                                                          |
-| 5. Uncertainty & inter-rater variations                 | BEN provides a measure of uncertainty that potentially reflects rater disagreement                                                                            | Fig. 5                     | <img src="./fig/Fig5.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xPVzA_FrZN1pI3l7fFRBlCNsRAEwQ0gG?usp=sharing)<br/>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MMglzvMXC8YHI58vSQbi7VbHl5xsBpKN?usp=sharing)                                  |
-| 6. ✨ Volumetric quantification for longitudinal studies | BEN improves the accuracy of atlas registration and benefits brain volumetric quantification compared with using other toolbox.                               | Fig. 6 & 7                 | <img src="./fig/Fig7.png" width = "150" height = "44" alt="Snapshot on Win" align=center />               | (Quick version)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13oZcuAsJ4yQcZ5jGl5kYNV3DlW-eFgVB?usp=sharing) <br/> (Full version)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mnlBcRBxpLb2QbcVqQsU5p50fRaM5Ifq?usp=sharing) |
+| Name                                                    | Description                                                                                                                                                   | Related Fig.<br/> in paper | Snapshot                                                                                                  | Colab link                                                                                                                                                                                                                                                                                                                                                           |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. BEN workflow & architecture                          | BEN renovates the brain extraction workflow to adapt to multiple species, modalities and platforms                                                            | Fig. 1 & 2                 | <img src="./fig/BEN.png" width = "110" height = "120" alt="Snapshot on Win" align=center />               | This repo                                                                                                                                                                                                                                                                                                                                                            |
+| 2. ✨ Cross species task                                 | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. 3                     | <img src="./fig/cross-species-post.png" width = "150" height = "74" alt="Snapshot on Win" align=center /> | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)                                                                                                                                                                                                  |
+| 3. Cross modality / platform                            | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. S1 & S2               | <img src="./fig/cross-field.png" width = "150" height = "74" alt="Snapshot on Win" align=center />        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)                                                                                                                                                                                                  |
+| 4. Compare with other toolbox                           | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from various domains across multiple species, modalities, and field strengths. | Fig. 4                     | <img src="./fig/Fig4.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HgHgqli-mVuIj9QolJ85KEB8LJcgN5qh?usp=sharing)                                                                                                                                                                                                  |
+| 5. Uncertainty & inter-rater variations                 | BEN provides a measure of uncertainty that potentially reflects rater disagreement                                                                            | Fig. 5                     | <img src="./fig/Fig5.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xPVzA_FrZN1pI3l7fFRBlCNsRAEwQ0gG?usp=sharing)<br/>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MMglzvMXC8YHI58vSQbi7VbHl5xsBpKN?usp=sharing)                          |
+| 6. ✨ Volumetric quantification for longitudinal studies | BEN improves the accuracy of atlas registration and benefits brain volumetric quantification compared with using other toolbox.                               | Fig. 6 & 7                 | <img src="./fig/Fig7.png" width = "150" height = "44" alt="Snapshot on Win" align=center />               | (Quick ver)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13oZcuAsJ4yQcZ5jGl5kYNV3DlW-eFgVB?usp=sharing) <br/> (Full ver)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mnlBcRBxpLb2QbcVqQsU5p50fRaM5Ifq?usp=sharing) |
 
 
 
@@ -39,6 +39,8 @@ BEN: a generalized Brain Extraction Net for multimodal MRI data from rodents, no
 The details can be found in this [folder](/dataset_release).
 
 
+
+---
 ## Table of Contents
 
 * [Installation](#installation)
@@ -47,11 +49,8 @@ The details can be found in this [folder](/dataset_release).
     + [Cross field strength](#cross-field-strength) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
     + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
     + [Try your data](#try-your-data) 
-    + [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
 
-+ [Other feature](#other-feature)
-    + [Semi-supervised leaning](#semi-supervised-leaning)
-    + [Quality assessment](#quality-assessment)
+* [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
 
 * [Data release](#data-release)
 * [Notes](#Notes)
@@ -117,7 +116,13 @@ The target domain data folder looks like this: (Download data from this reposito
 
    ![](fig/cross-species-post.png)
 
-## Interface for neruoimaging toolboxes
+## Try your data
+
+[//]: # (todo)
+
+# Interface for neruoimaging toolboxes
+
+The usages and details can be found in this [folder](/interface).
 
 | Name       | Link                             |
 |------------|----------------------------------|
@@ -128,22 +133,13 @@ The target domain data folder looks like this: (Download data from this reposito
 | SPM        | fil.ion.ucl.ac.uk/spm            |
 | Nipype     | pypi.org/project/nipype/         |
 
-(coming soon ...)
 
-## Other feature
 
-(to update)
-
-### Semi-supervised leaning
-
-### Quality assessment
 
 # Data release
 
-* For details about datasets, please refer to our paper.
-* The scans used in our tutorial could be downlowd via link in Colab Notebook.
-* The complete datasets will be released via [zenodo.org](https://zenodo.org/). Any additional data related to this
-  paper can be requested from the authors.
+The details can be found in this [folder](/dataset_release).
+
 
 # Notes
 

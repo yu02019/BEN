@@ -1,4 +1,19 @@
+# BEN interface
 Codes for neuroimaging analysis via Matlab, Python(Nipype) and shell scripting.
+
+As skull stripping is usually the first preprocessing step in the most pipeline, BEN can be used as a tool independently or called in shell scripts to work with other neuroimaging tool synergistically.
+
+## Usage
+Please refer to the Colab notebook examples.
+
+| Neuroimaging tool   | Style          | Colab link                                                                                                                                                                  |
+|---------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ANTs (Registration) | Shell scripts  | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mnlBcRBxpLb2QbcVqQsU5p50fRaM5Ifq?usp=sharing) Sec 3.0 |
+| ANTs (N4)           | Python(Nipype) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13V0btuvD6x6c-ClHmKoTClE-El78k6QM?usp=sharing)         |
+
+
+
+## File structure
 
 ```
 tree
@@ -46,6 +61,8 @@ tree
 │      smri_fsreconall.py
 │      tessellation_tutorial.py
 │      test_spm.py
+│      utils_ants_os.py
+│      utils_trans_os.py
 │      workshop_dartmouth_2010.py
 │      
 └─shell_sript
