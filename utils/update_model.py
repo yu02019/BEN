@@ -41,10 +41,10 @@ def update_weight(train_data='', label_data='',
     read / load cross_domain
     '''
     read_from_npy = False
-    if not read_from_npy:
-        nii_path = train_data + '/*'
-        label_path = label_data + '/*'
+    nii_path = train_data + '/*'
+    label_path = label_data + '/*'
 
+    if not read_from_npy:
         all_src_data = read_from_nii(nii_path=nii_path, need_resize=256, Hu_window='auto',
                                      need_rotate=need_rotate, max_num=max_num)
         all_src_data = np.expand_dims(all_src_data, -1)
@@ -125,11 +125,12 @@ def update_weight(train_data='', label_data='',
                    callbacks=callbacks_list)
 
     ''' if using label '''
-    # for layer in models.layers:
-    #     layer.trainable = True
-    # models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
-    # models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0.1,
-    #            callbacks=callbacks_list)
+    if len(label_path) > 2:  # if label path is not empty. len('' + '/*') == 2
+        for layer in models.layers:
+            layer.trainable = True
+        models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
+        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0.1,
+                   callbacks=callbacks_list)
 
     # del models
 

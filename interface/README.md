@@ -1,7 +1,7 @@
 # BEN interface
 Codes for neuroimaging analysis via Matlab, Python(Nipype) and shell scripting.
 
-As skull stripping is usually the first preprocessing step in the most pipeline, BEN can be used as a tool independently or called in shell scripts to work with other neuroimaging tool synergistically.
+As skull stripping is usually the first preprocessing step in the most pipelines, BEN can be used as a tool independently or called in shell scripts to work with other neuroimaging tool synergistically.
 
 ## Usage
 Please refer to the Colab notebook examples.

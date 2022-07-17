@@ -54,7 +54,7 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
 
         if return_nii:
             ref_nii = get_itk_image(name)
-            output_name = output_path + '/' + name.split('\\')[-1]
+            output_name = output_path + '/' + name.split('/')[-1]  # Note: Windows: name.split('\\')[-1]; Linux: name.split('/')[-1]
             nii = nii.astype(float)
             write_itk_imageArray(nii, output_name, ref_nii)
             tag = tag + 1
@@ -62,5 +62,6 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
         tag = tag + 1
 
 
-remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA-post')
-remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft-post')
+if __name__ == '__main__':
+    remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA-post')
+    remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft-post')
