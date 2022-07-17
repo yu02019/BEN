@@ -82,7 +82,7 @@ def load_slice(raw_path='', zeroshot_path='', DA_path='', scans_num=0, disp_num=
     return raw, zeroshot, DA
 
 
-def plot_segmentation_cross_species(raw, zeroshot, ft, DA, gt, task, hspace=-0.6):
+def plot_segmentation_cross_species(raw, zeroshot, ft, DA, gt, task, hspace=-0.6, wspace=0.0, figsize=None):
     """
 
     :param raw:
@@ -96,7 +96,7 @@ def plot_segmentation_cross_species(raw, zeroshot, ft, DA, gt, task, hspace=-0.6
     """
 
     fig = plt.figure(
-        # figsize=(16, 9)
+        figsize=figsize
     )
 
     timepoint_count = raw.shape[0]
@@ -136,14 +136,13 @@ def plot_segmentation_cross_species(raw, zeroshot, ft, DA, gt, task, hspace=-0.6
         # plt.title('No.{} scan lesion\n'.format(i + 1), fontsize=16)
         plt.xticks([]), plt.yticks([])
 
-    plt.subplots_adjust(hspace=hspace, wspace=0.0)
+    plt.subplots_adjust(hspace=hspace, wspace=wspace)  # wspace=0.0
     # plt.tight_layout()
     fig.suptitle('Plot of different methods on cross-{} task'.format(task), fontsize=14)
-    plt.savefig('result.png', dpi=300)
+    # plt.savefig('result.png', dpi=300)
     plt.show()
 
-
-def plot_segmentation(raw, zeroshot, DA, task, hspace=-0.7):
+def plot_segmentation(raw, zeroshot, DA, task, hspace=-0.7, wspace=0.0, figsize=None):
     """
     Each 'methods' need a set of slices for plot
     Displays the segmentation results.
@@ -157,7 +156,7 @@ def plot_segmentation(raw, zeroshot, DA, task, hspace=-0.7):
     hspace: float, optional. The height of the padding between subplots, as a fraction of the average axes height.
     """
     fig = plt.figure(
-        # figsize=(8, 4)
+        figsize=figsize
     )
 
     timepoint_count = raw.shape[0]
@@ -187,6 +186,7 @@ def plot_segmentation(raw, zeroshot, DA, task, hspace=-0.7):
     fig.suptitle('Plot of different methods on cross-{} task'.format(task), fontsize=14)
     # plt.savefig('result.png', dpi=300)
     plt.show()
+
 
 
 if __name__ == '__main__':
