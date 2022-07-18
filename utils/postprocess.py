@@ -3,7 +3,6 @@
 Remove false positive small regions in segmentation results.
 
 """
-# from .utils_mri import *
 import numpy as np
 import os
 from glob import glob
@@ -35,7 +34,7 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
         nii = get_itk_array(name, False)
         print('matrix shape:\t', nii.shape)
 
-        label_matrix = measure.label(nii, 8, return_num=True)
+        label_matrix = measure.label(nii, 8, return_num=True)  # version:0.16.2
 
         connected_regions = []  # connected_regions
         for k in range(label_matrix[1]):
@@ -63,5 +62,5 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
 
 
 if __name__ == '__main__':
-    remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-DA-post')
-    remove_small_objects(input_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft', output_path=r'G:\2020_01_17\G\gmycode\unet-BET_pm2.5\unet-github\data\rat\pred-Rat-42d-2022-%1-ft-post')
+    remove_small_objects(input_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-DA', output_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-DA-post')
+    remove_small_objects(input_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-ft', output_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-ft-post')
