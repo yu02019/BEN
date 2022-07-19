@@ -9,7 +9,9 @@
 <hr />
 
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contents](#table-of-contents)
+### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation]()  | [Contents](#table-of-contents)
+
+[//]: # (todo : add documentation!)
 
 ![](fig/BEN-workflow.png)
 
@@ -21,22 +23,22 @@
 
 | Feature                       | Description                                                                                                                                                                                                           | Colab link                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Transferability & flexibility | BEN can adapt to different species [1], modalities [2] and MR scanner with different magnetic fields [3].                                                                                                             | [1] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)<br/> [2] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing) <br/> [3] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing) |
+| Transferability & flexibility | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from diverse domains across multiple species [1], modalities [2], and MR scanners with different field strengths [3].                  | [1] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)<br/> [2] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing) <br/> [3] [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing) |
 | Quality assessment            | Unlike traditional toolboxes, which mainly rely on manual inspection to assess the brain extraction quality, BEN incorporates a quality assessment module to automatically evaluate its brain extraction performance. | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MMglzvMXC8YHI58vSQbi7VbHl5xsBpKN?usp=sharing)                                                                                                                                                                                                                                                                                                                                                                |
 | Speed 🚀                      | Inference: Less than 1 sec/scan;<br/>Adaptation to a new imaging center/application: About 10 min for deployment.                                                                                                     | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 
 ### Replicate demo
+ 
 
-
-| Name                                                    | Description                                                                                                                                                   | Related Fig.<br/> in paper | Snapshot                                                                                                  | Colab link                                                                                                                                                                                                                                                                                                                                                                          |
-|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1. BEN workflow & architecture                          | BEN renovates the brain extraction workflow to adapt to multiple species, modalities and platforms                                                            | Fig. 1 & 2                 | <img src="./fig/BEN.png" width = "110" height = "120" alt="Snapshot on Win" align=center />               | This repository                                                                                                                                                                                                                                                                                                                                                                     |
-| 2. ✨ Cross species task                                 | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. 3                     | <img src="./fig/cross-species-post.png" width = "150" height = "74" alt="Snapshot on Win" align=center /> | Cross species [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)                                                                                                                                                                                                   |
-| 3. Cross modality / platform                            | Fewer or even no labels are used when deploy BEN to new applications                                                                                          | Fig. S1 & S2               | <img src="./fig/cross-field.png" width = "150" height = "74" alt="Snapshot on Win" align=center />        | Cross modality [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing) <br/> Cross field [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)                                                                                                                                                                               |
-| 4. Compare with other toolbox                           | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from various domains across multiple species, modalities, and field strengths. | Fig. 4                     | <img src="./fig/Fig4.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HgHgqli-mVuIj9QolJ85KEB8LJcgN5qh?usp=sharing)                                                                                                                                                                                                                 |
-| 5. Uncertainty & inter-rater variations                 | BEN provides a measure of uncertainty that potentially reflects rater disagreement                                                                            | Fig. 5                     | <img src="./fig/Fig5.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | Disagree map [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xPVzA_FrZN1pI3l7fFRBlCNsRAEwQ0gG?usp=sharing)<br/> Uncertainty [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MMglzvMXC8YHI58vSQbi7VbHl5xsBpKN?usp=sharing)               |
-| 6. ✨ Volumetric quantification for longitudinal studies | BEN improves the accuracy of atlas registration and benefits brain volumetric quantification compared with using other toolbox.                               | Fig. 6 & 7                 | <img src="./fig/Fig7.png" width = "150" height = "44" alt="Snapshot on Win" align=center />               | Quick ver (skip registration)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13oZcuAsJ4yQcZ5jGl5kYNV3DlW-eFgVB?usp=sharing) <br/> Full ver [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mnlBcRBxpLb2QbcVqQsU5p50fRaM5Ifq?usp=sharing) |
+| Name                                                    | Description                                                                                                                                                   | Related Fig.<br/> in paper | Snapshot                                                                                                  | Colab link                                                                                                                                                                                                                                                                                                                                                                                        |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. BEN workflow & architecture                          | BEN renovates the brain extraction workflow to adapt to multiple species, modalities and platforms                                                            | Fig. 1 & 2                 | <img src="./fig/BEN.png" width = "110" height = "120" alt="Snapshot on Win" align=center />               | This repository                                                                                                                                                                                                                                                                                                                                                                                   |
+| 2. ✨ Cross species                                      | Deploying BEN to new species requires minimal or even no labels.                                                                                              | Fig. 3                     | <img src="./fig/cross-species-post.png" width = "150" height = "74" alt="Snapshot on Win" align=center /> | Cross species [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)                                                                                                                                                                                                                 |
+| 3. Cross modalities / MR scanners                       | Deploying BEN to new modalities/MR platforms requires minimal or even no labels.                                                                              | Fig. S1 & S2               | <img src="./fig/cross-field.png" width = "150" height = "74" alt="Snapshot on Win" align=center />        | Cross modalities [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing) <br/> Cross MR scanners [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)                  |
+| 4. Compare with other toolbox                           | BEN outperforms traditional SOTA methods and advantageously adapts to datasets from various domains across multiple species, modalities, and field strengths. | Fig. 4                     | <img src="./fig/Fig4.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HgHgqli-mVuIj9QolJ85KEB8LJcgN5qh?usp=sharing)                                                                                                                                                                                                                               |
+| 5. Uncertainty & inter-rater variations                 | Compared to traditional toolboxes, BEN provides a measure of uncertainty that potentially reflects rater disagreement                                         | Fig. 5                     | <img src="./fig/Fig5.png" width = "150" height = "74" alt="Snapshot on Win" align=center />               | Disagree map [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xPVzA_FrZN1pI3l7fFRBlCNsRAEwQ0gG?usp=sharing)<br/> Uncertainty [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MMglzvMXC8YHI58vSQbi7VbHl5xsBpKN?usp=sharing)                             |
+| 6. ✨ Volumetric quantification for longitudinal studies | BEN improves the accuracy of atlas registration and benefits brain volumetric quantification compared with using other toolbox.                               | Fig. 6 & 7                 | <img src="./fig/Fig7.png" width = "150" height = "44" alt="Snapshot on Win" align=center />               | Registration comparision [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1mnlBcRBxpLb2QbcVqQsU5p50fRaM5Ifq?usp=sharing)  <br/> Volumetric quantification [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/13oZcuAsJ4yQcZ5jGl5kYNV3DlW-eFgVB?usp=sharing) |
 
 
 
@@ -55,12 +57,14 @@ The details can be found in this [folder](/dataset_release).
     + [Cross modality](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
     + [Cross field strength](#cross-field-strength) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)
     + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
-    + [Try your data](#try-your-data) 
+    + [Try your data](#try-your-data)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing)
 * [Resources](#resources)
   * [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
   * [Data release](/dataset_release)
   * [Pretained weight](/dataset_release)
   * [Contributing to BEN](/dataset_release)
+
+
 
 ## Installation
 
@@ -73,13 +77,14 @@ Requirements:
 * numpy == 1.16
 * SimpleITK == 2.0
 * opencv-python == 4.1
+* scikit-image == 0.16.2
 
 [//]: # (* matplotlib == 3.3.1)
 
 Install dependencies:
 
 
-```
+```shell
 git clone https://github.com/yu02019/BEN.git
 cd BEN
 pip install -r requirement.txt
@@ -129,10 +134,12 @@ The target domain data folder looks like this: (Download data from this reposito
 
 ## Try your data
 
-Feel free to try your data or deploy BEN to your preprocessing pipeline.
+Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing)
 
-[//]: # (todo)
-[//]: # (add new demo usage here!)
+[//]: # (todo : add new demo usage here!)
+```shell
+python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
+```
 
 # Resources
 
@@ -160,8 +167,7 @@ The details can be found in this [folder](/dataset_release).
 
 ---
 
-[//]: # (todo)
-[//]: # (add cite!)
+[//]: # (todo: add cite!)
 
 
 Acknowledgements: TODO
