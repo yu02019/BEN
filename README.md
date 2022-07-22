@@ -9,9 +9,8 @@
 <hr />
 
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation]()  | [Contents](#table-of-contents)
+### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents)
 
-[//]: # (todo : add documentation!)
 
 ![](fig/BEN-workflow.png)
 
@@ -51,6 +50,8 @@ The details can be found in this [folder](/dataset_release).
 
 ---
 ## Quick Start Contents
+
+Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) for installation, tutorials and more.
 
 * [Installation](#installation)
 * [Quick Start / Tutorial](#quick-start)
