@@ -12,4 +12,3 @@ sphinx-rtd-theme
 ipykernel
 matplotlib
 Footer
-© 2022 GitHub, Inc.
