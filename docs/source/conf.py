@@ -43,7 +43,7 @@ extensions = ['recommonmark',
               # "sphinxarg.ext",
               # "sphinxcontrib.autodoc_pydantic",
               "nbsphinx",
-              "enum_tools.autoenum",
+              # "enum_tools.autoenum",
               ]
 
 autodoc_member_order = "bysource"
