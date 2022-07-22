@@ -54,8 +54,8 @@ The details can be found in this [folder](/dataset_release).
 
 * [Installation](#installation)
 * [Quick Start / Tutorial](#quick-start)
-    + [Cross modality](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
-    + [Cross field strength](#cross-field-strength) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)
+    + [Cross modalities](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
+    + [Cross MR scanner with different field strengths](#cross_MR_scanner_with_different_field_strengths) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)
     + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
     + [Try your data](#try-your-data)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing)
 * [Resources](#resources)
@@ -63,7 +63,6 @@ The details can be found in this [folder](/dataset_release).
   * [Data release](/dataset_release)
   * [Pretained weight](/dataset_release)
   * [Contributing to BEN](/dataset_release)
-
 
 
 ## Installation
@@ -99,7 +98,7 @@ The target domain data folder looks like this: (Download data from this reposito
 * All the undermentioned results can be repeated via our tutorial Notebook.
 * New weight will be saved independently for further customized application.
 
-### Cross modality
+### Cross modalities
 
 #### Results:
 
@@ -109,15 +108,15 @@ The target domain data folder looks like this: (Download data from this reposito
 
    ![Alt text](fig/cross-modality.png "fig.1")
 
-### Cross field strength:
+### Cross MR scanner with different field strengths
 
-1. Field strength: 11.7 T -> 7 T
+1. MR scanner with different field strengths: 11.7 T -> 7 T
 2. For this exemplar domain adaptation (DA) task, No label is used (zero-shot).
 3. From top raw to the third raw: Raw image, Baseline result, BEN's result.
 
    ![](fig/cross-field.png)
 
-### Cross species:
+### Cross species
 
 1. Species: Mouse -> Rat
 2. For this exemplar domain adaptation (DA) task, only ONE label is used.
