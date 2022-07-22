@@ -12,3 +12,6 @@ sphinx-rtd-theme
 ipykernel
 matplotlib
 
+
+sphinx_markdown_tables
+recommonmark
