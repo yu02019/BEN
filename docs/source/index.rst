@@ -98,7 +98,6 @@ If you have any suggestions, feel free to contact our corresponding author.
 .. * :ref:`search`
 
 .. |Docs| image:: https://img.shields.io/readthedocs/basicpy
-    :target: https://github.com/yu02019/BEN
+    :target: https://ben-docs.readthedocs.io/en/latest/
     :alt: Documentation
 
-.. https://basicpy.readthedocs.io/en/latest/ (to update)

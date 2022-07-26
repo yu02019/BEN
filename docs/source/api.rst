@@ -61,4 +61,3 @@ Model
      - Adds a Non-Local block for self attention to the input tensor.
 
 
-:raw-html-m2r:`<a href="#" title="|          |             |">//</a>`\ : # ()
