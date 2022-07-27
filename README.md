@@ -170,7 +170,7 @@ The details can be found in this [folder](/dataset_release).
 
 
 # Citation
-If you find our work / datasets / pretrained models useful for your research, please consider citing
+If you find our work / datasets / pretrained models useful for your research, please consider citing:
 
 ```bibtex
 @article{yu2022ben,
