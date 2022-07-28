@@ -136,7 +136,6 @@ The target domain data folder looks like this: (Download data from this reposito
 
 Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing).
 
-[//]: # (todo : add new demo usage here!)
 ```shell
 python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
 ```
@@ -185,8 +184,8 @@ If you find our work / datasets / pretrained models useful for your research, pl
 ```bibtex
 @dataset{yu_ziqi_2022_6844489,
   author       = {Yu Ziqi and
-                  Wenjing Xu and
-                  Xiao-Yong Zhang},
+                  Xu Wenjing and
+                  Zhang Xiao-Yong},
   title        = {{A longitudinal MRI dataset of young adult C57BL6J 
                    mouse brain}},
   month        = jul,
