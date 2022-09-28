@@ -15,7 +15,7 @@
 ![](fig/BEN-workflow.png)
 
 ## Important Note
-We will update full codes (e.g., preprocessing, data augmentation) for current notebook (Try_your_data.ipynb). It will take about 3 weeks. 
+We will update full codes (e.g., preprocessing, data augmentation) for the current notebook (Try_your_data.ipynb). It will take about 3 weeks. 
 
 ## Overview
 🚀 Quick start to use BEN or replicate our experiments in 5 minutes!
