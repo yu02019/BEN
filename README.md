@@ -15,12 +15,13 @@
 ![](fig/BEN-workflow.png)
 
 See also:
-<img src="https://github.com/yu02019/MouseGAN-pp/blob/main/fig/logo.png" width = "100" height = "72" alt="MouseGAN++ logo" align=center /> | [Github project link](https://github.com/yu02019/MouseGAN-pp)
+<img src="https://github.com/yu02019/MouseGAN-pp/blob/main/fig/logo.png" width = "293" height = "100" alt="MouseGAN++ logo" align=center /> | [Github project link](https://github.com/yu02019/MouseGAN-pp)
 
 ```
-Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain
+"Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain." Under review (2022)
 ```
 
+---
 
 ## Important Note
 We will update full codes (e.g., preprocessing, data augmentation) for the current notebook (Try_your_data.ipynb). It will take about 3 weeks. 
