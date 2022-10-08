@@ -9,10 +9,18 @@
 <hr />
 
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents)
+### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [See also: MouseGAN++](https://github.com/yu02019/MouseGAN-pp)
 
 
 ![](fig/BEN-workflow.png)
+
+See also:
+<img src="https://github.com/yu02019/MouseGAN-pp/blob/main/fig/logo.png" width = "100" height = "72" alt="MouseGAN++ logo" align=center /> | [Github project link](https://github.com/yu02019/MouseGAN-pp)
+
+```
+Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain
+```
+
 
 ## Important Note
 We will update full codes (e.g., preprocessing, data augmentation) for the current notebook (Try_your_data.ipynb). It will take about 3 weeks. 
