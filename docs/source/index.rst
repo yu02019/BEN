@@ -97,7 +97,7 @@ If you have any suggestions, feel free to contact our corresponding author.
 .. * :ref:`modindex`
 .. * :ref:`search`
 
-.. |Docs| image:: https://img.shields.io/readthedocs/basicpy
+.. |Docs| image:: https://img.shields.io/readthedocs/ben-docs
     :target: https://ben-docs.readthedocs.io/en/latest/
     :alt: Documentation
 
