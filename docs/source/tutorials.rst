@@ -29,7 +29,6 @@ Quick start to use BEN or replicate our experiments in 5 minutes!
     notebooks/5_QA
     notebooks/6_(Registration comparision)Volumetric_quantification
     notebooks/6_Volumetric_quantification
-    notebooks/Try_your_data
 
 
 
