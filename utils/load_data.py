@@ -7,7 +7,7 @@ import numpy as np
 from glob import glob
 import SimpleITK as itk
 import matplotlib.pyplot as plt
-
+import warnings
 
 # from skimage.transform import resize
 # from scipy.misc.pilutil import imresize
@@ -69,14 +69,13 @@ def write_itk_image(image, filename):
     return
 
 
-def write_itk_imageArray(imageArray, filename,
-                         src_nii=None):
+def write_itk_imageArray(imageArray, filename, src_nii=None):
     img = make_itk_image(imageArray, src_nii)
     write_itk_image(img, filename)
 
 
 def read_from_nii(nii_path=r'E:\data\src/*', need_rotate=True,
-                  need_resize=256, Hu_window=(-1000, 512), modality=None, max_num=-1, keyword=None):
+                  need_resize=256, Hu_window=(-1000, 512), modality=None, max_num=-1, keyword=None, check_orientation=None):
     '''
     read nii/nii.gz files in one folder
     :param nii_path: path of folder
@@ -86,6 +85,8 @@ def read_from_nii(nii_path=r'E:\data\src/*', need_rotate=True,
     :param modality:
     :param max_num:
     :param keyword:
+    :param check_orientation:
+
     :return:
     '''
 
@@ -100,16 +101,32 @@ def read_from_nii(nii_path=r'E:\data\src/*', need_rotate=True,
     shape_list = []
 
     for name in nii_path:
-        nii = get_itk_array(name, False)
+        if check_orientation is None:
+            nii = get_itk_array(name, False)
+        elif check_orientation == 'RIA':
+            nii = get_itk_image(name)
+            nii = itk.DICOMOrient(nii, 'RIA')
+            nii = itk.GetArrayFromImage(nii)
+        elif check_orientation == 'RPI':
+            nii = get_itk_image(name)
+            nii = itk.DICOMOrient(nii, 'RPI')
+            nii = itk.GetArrayFromImage(nii)
+
 
         '''
         add shape to list
         '''
         if modality == 'epi':
-            if nii.ndim == 4:
-                nii = nii[4]
+            if nii.ndim == 4:  # check ndim
+                if nii.shape[0] >= 4:  # check timepoint
+                    nii = nii[4]  # default: 4th timepoint (However, some fMRI only have 2 timepoints)
+                else:
+                    nii = nii[-1]  # if length < 4, select the last timepoint
             else:
-                print('the ndim of EPI/fMRI nii cross_domain is ', nii.ndim, 'Please check cross_domain!')
+                warnings.warn('the ndim of EPI/fMRI nii data is {}. Please check data!'.format(nii.ndim))
+
+        elif nii.ndim >= 4:
+            raise Exception("Please check the modality of your data.")
 
         shape_list.append(nii.shape)
 
@@ -177,7 +194,7 @@ def read_from_nii(nii_path=r'E:\data\src/*', need_rotate=True,
 
 
 def read_from_nii_label(nii_path=r'E:\Lung\covid_data0424\label_V2_lung/*', need_rotate=True,
-                        need_resize=256, interest_label=1, max_num=-1, keyword=None):
+                        need_resize=256, interest_label=1, max_num=-1, keyword=None, check_orientation=None):
     '''
 
     :param nii_path:
@@ -186,6 +203,7 @@ def read_from_nii_label(nii_path=r'E:\Lung\covid_data0424\label_V2_lung/*', need
     :param interest_label:
     :param max_num:
     :param keyword:
+    :param check_orientation:
 
     :return:
 
@@ -202,7 +220,16 @@ def read_from_nii_label(nii_path=r'E:\Lung\covid_data0424\label_V2_lung/*', need
     total_list = []
 
     for name in nii_path:
-        nii = get_itk_array(name, False)
+        if check_orientation is None:
+            nii = get_itk_array(name, False)
+        elif check_orientation == 'RIA':
+            nii = get_itk_image(name)
+            nii = itk.DICOMOrient(nii, 'RIA')
+            nii = itk.GetArrayFromImage(nii)
+        elif check_orientation == 'RPI':
+            nii = get_itk_image(name)
+            nii = itk.DICOMOrient(nii, 'RPI')
+            nii = itk.GetArrayFromImage(nii)
 
         print('Reading:\t', name.split('/')[-1])  # e.g. (301, 512, 512)
         print(nii.shape)
@@ -248,9 +275,8 @@ def read_from_nii_label(nii_path=r'E:\Lung\covid_data0424\label_V2_lung/*', need
     return total_all
 
 
-def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/',
-                     ref_path=r'E:\Lung\covid_data0424\src/*',
-                     need_rotate=True, need_resize=True, need_threshold=True, shape_list=None, keyword=None):
+def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/',ref_path=r'E:\Lung\covid_data0424\src/*',
+                     need_rotate=True, need_resize=True, need_threshold=True, shape_list=None, keyword=None, check_orientation=None):
     '''
     :param pred:
     :param save_path:
@@ -260,6 +286,7 @@ def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/
     :param need_threshold:
     :param shape_list:
     :param keyword:
+    :param check_orientation
     :return:
     '''
     nii_path = [_nii_path for _nii_path in glob(ref_path) if _nii_path.endswith('nii') or _nii_path.endswith('nii.gz')]
@@ -279,7 +306,15 @@ def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/
             matrix = nii_shape[1:]
         else:
             nii_ref = get_itk_image(name)
-            nii_matrix = get_itk_array(name)
+            original_orientation = itk.DICOMOrientImageFilter_GetOrientationFromDirectionCosines(nii_ref.GetDirection())  # e.g. 'LPS'
+            if check_orientation is None:
+                nii_matrix = get_itk_array(name)
+            elif check_orientation == 'RIA':
+                nii_ref_reorient = itk.DICOMOrient(nii_ref, 'RIA')
+                nii_matrix = itk.GetArrayFromImage(nii_ref_reorient)
+            elif check_orientation == 'RPI':
+                nii_ref_reorient = itk.DICOMOrient(nii_ref, 'RPI')
+                nii_matrix = itk.GetArrayFromImage(nii_ref_reorient)
             slices = nii_matrix.shape[0]
             matrix = nii_matrix.shape[1:3]
 
@@ -320,15 +355,27 @@ def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/
                 write_itk_imageArray(total_data, save_path + os.path.split(name)[-1],
                                      src_nii=None)  # Windows : '\\', ( or '/', easily confusable when using Linux PC）
             else:
-                write_itk_imageArray(total_data, save_path + os.path.split(name)[-1],
-                                     nii_ref)  # Windows : '\\', ( or '/', easily confusable when using Linux PC）
+                if check_orientation is None:
+                    write_itk_imageArray(total_data, save_path + os.path.split(name)[-1], nii_ref)  # Windows : '\\', ( or '/', easily confusable when using Linux PC）
+                else:
+                    new_nii = itk.GetImageFromArray(total_data)
+                    new_nii.SetDirection(nii_ref_reorient.GetDirection())
+                    new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
+                    write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1])
+
 
         else:
             if shape_list:
                 write_itk_imageArray(total_data, save_path + os.path.split(name)[-1],
                                      src_nii=None)
             else:
-                write_itk_imageArray(total_data, save_path + name.split('/')[-1], nii_ref)
+                if check_orientation is None:
+                    write_itk_imageArray(total_data, save_path + name.split('/')[-1], nii_ref)
+                else:
+                    new_nii = itk.GetImageFromArray(total_data)
+                    new_nii.SetDirection(nii_ref_reorient.GetDirection())
+                    new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
+                    write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1])
 
         tag = tag + slices
 

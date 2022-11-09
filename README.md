@@ -63,7 +63,7 @@ The details can be found in this [folder](/dataset_release).
 ---
 ## Quick Start Contents
 
-Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) for installation, tutorials and more.
+Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) or [video tutorials](#video-tutorials) for installation, tutorials and more.
 
 * [Installation](#installation)
 * [Quick Start / Tutorial](#quick-start)
@@ -71,6 +71,7 @@ Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) for instal
     + [Cross MR scanner with different field strengths](#cross_MR_scanner_with_different_field_strengths) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xrREREKEs0HvDvhxA0sGCLsIdAFNLd2w?usp=sharing)
     + [Cross species](#cross-species)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1qsBg-_6NxVFUJCk0tbTyQ7vY8_FLnrc9?usp=sharing)
     + [Try your data](#try-your-data)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing)
+    + [Video tutorials](#video-tutorials)
 * [Resources](#resources)
   * [Interface for neruoimaging toolboxes](#interface-for-neruoimaging-toolboxes)
   * [Data release](/dataset_release)
@@ -151,6 +152,12 @@ Feel free to try your data or deploy BEN to your preprocessing pipeline. Details
 ```shell
 python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
 ```
+
+## Video tutorials
+To further validate BEN’s generalization, we have evaluated BEN on two new external public ex-vivo MRI datasets ([rTg4510 mouse](https://github.com/dama-lab/mouse-brain-atlas/tree/master/rTg4510/rTg4510_ex_vivo): 25 ex-vivo scans, and [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8): 15 ex-vivo scans). When only one label is used for BEN adaptation/retraining, impressive performance is achieved on both datasets, despite the fact that BEN was originally designed for in-vivo MRI data.
+
+ -[ ] todo: update results and video link here. (Before November 11th)
+
 
 # Resources
 

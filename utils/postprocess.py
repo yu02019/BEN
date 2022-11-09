@@ -12,7 +12,7 @@ from utils.load_data import get_itk_array, get_itk_image, write_itk_imageArray
 
 def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
     """
-    Remove small objects after lung prediction.
+    Remove small objects after lung prediction. (Top-K largest connected region selection)
     :param input_path: The folder contains nii format files.
     :param output_path: If you only need to save postprocessed results, keep output_path = None
     :param return_nii: save to nii format.

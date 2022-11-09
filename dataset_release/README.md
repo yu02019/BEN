@@ -1,9 +1,9 @@
 # MRI dataset and pretained weight
 
-## [MRI dataset](#1.0) | [Pretained weight](#2.0) | [Contributing to BEN](#3.0)
+## [MRI dataset release](#1.0) | [Pretained weight](#2.0) | [Contributing to BEN](#3.0)
 
 <a name='1.0'></a>
-# 1. MRI dataset
+# 1. MRI dataset release
 The dataset used in our paper (Table. S1)
 
 ![](../fig/dataset.png)
@@ -37,9 +37,12 @@ Note:
 
 We provide all trained weight here via [Google Drive](https://drive.google.com/file/d/1aBrvDWtXRcLbwj3lKCln9SIcF-WWOt1D/view?usp=sharing). Users can deploy BEN as an out-of-the-box tool instantly if their data domain are contained within the after-mentioned lists.
 
-In detail, for the introduction of a new dataset, we suggest that the user do as follows.
+In detail, for the introduction of a new dataset, we suggest that the user do as follows. 
 1) First, use BEN to load the pretrained weights for the closest corresponding species.
-2) Consider labeling several scans to fine-tune the model if the pretrained weights do not yield satisfactory performance or the target species is beyond the scope of our datasets. The domain transfer procedures will be performed automatically, without human intervention.
+2) Run unsupervised domain adaptation on the user’s dataset. The customized weight will be updated and saved automatically, and the user will then use it to execute BEN on their data.
+3) Consider labeling several scans to fine-tune the model if the self-configuring weights do not yield satisfactory performance,
+
+
 
 Pretrained weight list:
 
@@ -49,7 +52,7 @@ Pretrained weight list:
 | Mouse-T2WI-9.4T  | Rat-T2WI-9.4T  | Marmoset-EPI-9.4T  | Macaque-T1WI-3T   | Human-T1WI-ABCD-3T                             |
 | Mouse-T2WI-7T    | Rat-T2WI-7T    |                    | Macaque-T1WI-1.5T | Human-T1WI-UKB-3T                              |
 | Mouse-EPI-11.7T  | Rat-EPI-9.4T   |                    |                   | Human-T1WI-ZIB-3T                              |
-| Mouse-EPI-9.4T   |                |                    |                   |                                                |
+| Mouse-EPI-9.4T   |                |                    |                   | Human-T1WI-HCP (Baby. Continuously updating)   |
 | Mouse-SWI-11.7T  |                |                    |                   |                                                |
 | Mouse-ASL-11.7T  |                |                    |                   |                                                |
 

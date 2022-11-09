@@ -38,6 +38,7 @@ def inference_pipeline(nii_filename='',
                   max_num=-1,
                   specific=None,
                   keyword=None,
+                  check_orientation=None
                   ):
     if is_mkdir and not os.path.exists(save_filename):
         print('Makedir:\t', save_filename)
@@ -57,7 +58,7 @@ def inference_pipeline(nii_filename='',
         shape_list = None
         if modality != 'epi':
             all_src_data = read_from_nii(nii_path=nii_path, need_resize=256, Hu_window='auto', need_rotate=need_rotate,
-                                         modality=modality, max_num=max_num, keyword=keyword)
+                                         modality=modality, max_num=max_num, keyword=keyword, check_orientation=check_orientation)
         elif modality == 'epi':
             all_src_data, shape_list = read_from_nii(nii_path=nii_path, need_resize=256, Hu_window='auto',
                                                      need_rotate=need_rotate, modality=modality)
@@ -83,7 +84,7 @@ def inference_pipeline(nii_filename='',
 
     save_pred_to_nii(pred=pred, save_path=save_path.replace('*', ''), ref_path=nii_path,
                      need_resize=True, need_rotate=need_rotate, shape_list=shape_list, need_threshold=True,
-                     keyword=keyword)
+                     keyword=keyword, check_orientation=check_orientation)
 
 
 def main():

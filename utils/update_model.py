@@ -16,8 +16,9 @@ def update_weight(train_data='', label_data='',
                   freeze=True,
                   momentum=0.8,
                   batch_size=32,
-                  epochs=30,
+                  epochs=60,  # 30
                   max_num=-1,
+                  check_orientation=None,
                   ):
     """
 
@@ -46,12 +47,12 @@ def update_weight(train_data='', label_data='',
 
     if not read_from_npy:
         all_src_data = read_from_nii(nii_path=nii_path, need_resize=256, Hu_window='auto',
-                                     need_rotate=need_rotate, max_num=max_num)
+                                     need_rotate=need_rotate, max_num=max_num, check_orientation=check_orientation)
         all_src_data = np.expand_dims(all_src_data, -1)
 
         if len(label_path) > 2:  # if label path is not empty. len('' + '/*') == 2
             all_label_data = read_from_nii_label(nii_path=label_path, need_resize=256, need_rotate=need_rotate,
-                                                 interest_label=1, max_num=max_num)
+                                                 interest_label=1, max_num=max_num, check_orientation=check_orientation)
             all_label_data = np.expand_dims(all_label_data, -1)
         else:
             all_label_data = np.zeros_like(all_src_data)  # create empty label matrix
@@ -67,9 +68,9 @@ def update_weight(train_data='', label_data='',
     # tf.keras.backend.clear_session()
 
     if weight:
+        models = backbone_network(256, 256, pretrained_weights=weight, need_complie=False, BN_list=BN_list,
+                                  droprate=droprate)
         if freeze:
-            models = backbone_network(256, 256, pretrained_weights=weight, need_complie=False, BN_list=BN_list,
-                                      droprate=droprate)
             for layer in models.layers:
                 if 'batch_normalization' not in layer.name:
                     layer.trainable = False
@@ -84,7 +85,17 @@ def update_weight(train_data='', label_data='',
             models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
             print('finetune all layers on target domain!')
     else:
-        input('please check input.')
+        # input('please check input.')
+        print('Note: no pretrained weight used.')
+        models = backbone_network(256, 256, pretrained_weights=None, need_complie=False, BN_list=BN_list,
+                                  droprate=droprate)
+        if freeze:
+            for layer in models.layers:
+                if 'batch_normalization' not in layer.name:
+                    layer.trainable = False
+                else:
+                    print('Trainable lay: ', layer.name)
+        models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
 
     '''
     setting
@@ -120,7 +131,7 @@ def update_weight(train_data='', label_data='',
     '''
     train
     '''
-    if freeze:
+    if freeze:  # 暂时注释!
         models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0.1,
                    callbacks=callbacks_list)
 
@@ -129,8 +140,38 @@ def update_weight(train_data='', label_data='',
         for layer in models.layers:
             layer.trainable = True
         models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
-        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0.1,
+        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # 0.1
                    callbacks=callbacks_list)
+
+    ''' 2022/11/09 '''
+    ''' if using label - train v2 +augment '''
+    # from keras.preprocessing.image import ImageDataGenerator
+    # # datagen = ImageDataGenerator(
+    # #     # featurewise_center=True,
+    # #     # featurewise_std_normalization=True,
+    # #     # rotation_range=20,
+    # #     # width_shift_range=0.2,
+    # #     # height_shift_range=0.2,
+    # #     horizontal_flip=True,
+    # #     # vertical_flip=True,
+    # #     zoom_range=0.2,
+    # #     shear_range=0.2,
+    # #     # fill_mode='reflect',  # 默认 nearest
+    # # )
+    # datagen = ImageDataGenerator(
+    #     # featurewise_center=True,
+    #     # featurewise_std_normalization=True,
+    #     # rotation_range=20,
+    #     width_shift_range=0.2,
+    #     height_shift_range=0.2,
+    #     # horizontal_flip=True,
+    #     # vertical_flip=True,
+    #     rescale=0.1
+    # )
+    # # 使用实时数据增益的批数据对模型进行拟合：
+    # models.fit_generator(datagen.flow(all_src_data, all_label_data, batch_size=32),
+    #                     steps_per_epoch=len(all_src_data) / 32, epochs=epochs)
+
 
     # del models
 
