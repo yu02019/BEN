@@ -9,11 +9,22 @@
 <hr />
 
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation]()  | [Contents](#table-of-contents)
+### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [See also: MouseGAN++](https://github.com/yu02019/MouseGAN-pp)
 
-[//]: # (todo : add documentation!)
 
 ![](fig/BEN-workflow.png)
+
+See also:
+<img src="https://github.com/yu02019/MouseGAN-pp/blob/main/fig/logo.png" width = "293" height = "100" alt="MouseGAN++ logo" align=center /> | [Github project link](https://github.com/yu02019/MouseGAN-pp)
+
+```
+"Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain." Under review (2022)
+```
+
+---
+
+## Important Note
+We will update full codes (e.g., preprocessing, data augmentation) for the current notebook (Try_your_data.ipynb). It will take about 3 weeks. 
 
 ## Overview
 🚀 Quick start to use BEN or replicate our experiments in 5 minutes!
@@ -51,6 +62,8 @@ The details can be found in this [folder](/dataset_release).
 
 ---
 ## Quick Start Contents
+
+Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) for installation, tutorials and more.
 
 * [Installation](#installation)
 * [Quick Start / Tutorial](#quick-start)
@@ -133,9 +146,8 @@ The target domain data folder looks like this: (Download data from this reposito
 
 ## Try your data
 
-Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing)
+Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing).
 
-[//]: # (todo : add new demo usage here!)
 ```shell
 python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
 ```
@@ -166,10 +178,38 @@ The details can be found in this [folder](/dataset_release).
 
 ---
 
-[//]: # (todo: add cite!)
 
 
-Acknowledgements: TODO
+# Citation
+If you find our work / datasets / pretrained models useful for your research, please consider citing:
+
+```bibtex
+@article{yu2022ben,
+  title={BEN: a generalizable Brain Extraction Net for multimodal MRI data from rodents, nonhuman primates, and humans},
+  author={Yu, Ziqi and Han, Xiaoyang and Xu, Wenjing and Zhang, Jie and Marr, Carsten and Shen, Dinggang and Peng, Tingying and Zhang, Xiao-Yong and Feng, Jianfeng},
+  journal={bioRxiv},
+  year={2022},
+  publisher={Cold Spring Harbor Laboratory}
+}
+```
+
+```bibtex
+@dataset{yu_ziqi_2022_6844489,
+  author       = {Yu Ziqi and
+                  Xu Wenjing and
+                  Zhang Xiao-Yong},
+  title        = {{A longitudinal MRI dataset of young adult C57BL6J 
+                   mouse brain}},
+  month        = jul,
+  year         = 2022,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.6844489},
+  url          = {https://doi.org/10.5281/zenodo.6844489}
+}
+```
+
+
+[//]: # (Acknowledgements: TODO)
 
 Disclaimer: This toolkit is only for research purpose.
 
