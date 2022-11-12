@@ -156,7 +156,7 @@ python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
 ## Video tutorials
 To further validate BEN’s generalization, we have evaluated BEN on two new external public ex-vivo MRI datasets ([rTg4510 mouse](https://github.com/dama-lab/mouse-brain-atlas/tree/master/rTg4510/rTg4510_ex_vivo): 25 ex-vivo scans, and [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8): 15 ex-vivo scans). When only one label is used for BEN adaptation/retraining, impressive performance is achieved on both datasets, despite the fact that BEN was originally designed for in-vivo MRI data.
 
- -[ ] todo: update results and video link here. (Before November 11th)
+- [ ] todo: update results and video link here. (Before November 13th)
 
 
 # Resources
