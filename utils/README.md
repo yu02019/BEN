@@ -4,17 +4,17 @@
 
 - [x] Orientation detection 
 - [x] Top-K largest connected region selection 
-- [ ] todo: update CRF before November 11th.
+- [x] todo: update CRF before November 12th.
 
 | Name                                     | File               | Description                                                                                                                                        | Update date |
 |------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | Orientation detection                    | load_data.py       | Check the orientation of input MR scans and automatically correct them during runtime. The output files will keep the original user's orientation. | 2022/11     |
 | Top-K largest connected region selection | postprocess.py     | Remove small objects after brain extraction.                                                                                                       | 2022/11     |
-| Conditional Random Field (CRF)           | postprocess_crf.py | Optimize segmentation.                                                                                                                             | 2022/11     |
+| Conditional Random Field (CRF)           | postprocess_crf.py | Optimize segmentation. (provide 2D and 3D version of CRF)                                                                                          | 2022/11     |
 
 ## Running log for quick inspection
 
-- [ ] todo: update before November 11th.
+- [ ] todo: update before November 12th.
 
 | Name                      | File             | Description                                                                                                                                                                   | Update date |
 |---------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|

@@ -20,10 +20,24 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", dest='input', required=True, type=str, help="Input folder")
     parser.add_argument("-o", dest='output', required=True, type=str, help="Output folder")
-    parser.add_argument("-model", dest='model', help="model weight path")
+    parser.add_argument("-weight", dest='weight', required=True, help="model weight path")
+    parser.add_argument("-check", dest='check_orientation',
+                        help="Check input orientation. None for skipping. 'RIA' for rodents and 'RPI' for NHPs")
+    parser.add_argument("-mkdir", dest='is_mkdir', default=True, help="If the output folder doesn't exist, creat it")
 
     parser.set_defaults(BN_list=[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
 
     args = parser.parse_args()
 
-    inference_pipeline(args.input, args.output, weight=args.model, BN_list=args.BN_list)
+    ''' Run inference '''
+    inference_pipeline(args.input, args.output, weight=args.weight, BN_list=args.BN_list,
+                       check_orientation=args.check_orientation, is_mkdir=args.is_mkdir)
+
+    ''' (Optional) Run post-processing '''
+    pass
+
+    ''' Generate visual report '''
+    # todo
+    pass
+
+

@@ -1,12 +1,13 @@
 import os
 import numpy as np
-from utils.load_data import read_from_nii, read_from_nii_label
+# from utils.load_data import read_from_nii, read_from_nii_label
 from model.models_network import backbone_network
 import time
 from model.loss import weighted_dice_with_CE, dice_coef
 from utils.load_data import read_from_nii, read_from_nii_label
 
-def update_weight(train_data='', label_data='',
+
+def update_weight(train_data='', label_data='', target_data='',
                   need_mkdir=False,
                   weight=None,
                   need_rotate=True,
@@ -16,14 +17,15 @@ def update_weight(train_data='', label_data='',
                   freeze=True,
                   momentum=0.8,
                   batch_size=32,
-                  epochs=60,  # 30
+                  epochs=30,
                   max_num=-1,
                   check_orientation=None,
                   ):
     """
 
-    :param train_data:
-    :param label_data:
+    :param train_data: folder path for raw target MR scans (with labels in another folder)
+    :param label_data: folder path for labels of target scans
+    :param target_data: folder path for all target raw MR scans (with or without labels)
     :param need_mkdir:
     :param weight:
     :param need_rotate:
@@ -44,6 +46,7 @@ def update_weight(train_data='', label_data='',
     read_from_npy = False
     nii_path = train_data + '/*'
     label_path = label_data + '/*'
+    target_path = target_data + '/*'  # 2022/11/11 update
 
     if not read_from_npy:
         all_src_data = read_from_nii(nii_path=nii_path, need_resize=256, Hu_window='auto',
@@ -128,58 +131,64 @@ def update_weight(train_data='', label_data='',
         # early,
         # reduceLROnPlat
     ]
+
     '''
-    train
+    Train
     '''
-    if freeze:  # 暂时注释!
-        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0.1,
+    ''' Step 1: Use limited-label raw MR images (around 3–10, depending on the quality of scans). Update BN layers. '''
+    if freeze:
+        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # or 0.1
                    callbacks=callbacks_list)
 
-    ''' if using label '''
+    ''' Step 2: If have labels, update all layers (both Conv and BN layers). Otherwise, skip (zero-shot inference). '''
     if len(label_path) > 2:  # if label path is not empty. len('' + '/*') == 2
         for layer in models.layers:
             layer.trainable = True
         models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
-        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # 0.1
+        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # or 0.1
                    callbacks=callbacks_list)
 
-    ''' 2022/11/09 '''
-    ''' if using label - train v2 +augment '''
+    ''' Step 2.5 (Optional): Update all layers with augmentation (Not recommended) '''
     # from keras.preprocessing.image import ImageDataGenerator
-    # # datagen = ImageDataGenerator(
-    # #     # featurewise_center=True,
-    # #     # featurewise_std_normalization=True,
-    # #     # rotation_range=20,
-    # #     # width_shift_range=0.2,
-    # #     # height_shift_range=0.2,
-    # #     horizontal_flip=True,
-    # #     # vertical_flip=True,
-    # #     zoom_range=0.2,
-    # #     shear_range=0.2,
-    # #     # fill_mode='reflect',  # 默认 nearest
-    # # )
     # datagen = ImageDataGenerator(
-    #     # featurewise_center=True,
-    #     # featurewise_std_normalization=True,
     #     # rotation_range=20,
     #     width_shift_range=0.2,
     #     height_shift_range=0.2,
-    #     # horizontal_flip=True,
+    #     horizontal_flip=True,
     #     # vertical_flip=True,
-    #     rescale=0.1
+    #     zoom_range=0.2,
+    #     shear_range=0.2,
+    #     # fill_mode='reflect',
     # )
-    # # 使用实时数据增益的批数据对模型进行拟合：
+    # # Fit the model using batch data with real-time augmentation
     # models.fit_generator(datagen.flow(all_src_data, all_label_data, batch_size=32),
     #                     steps_per_epoch=len(all_src_data) / 32, epochs=epochs)
 
+    ''' Step 3: Freeze all layers except the BN layers and adapt them to raw MR scans from the target domain. (no labeling needed) '''
+    if freeze and len(target_path) > 2:  # if target path is not empty. len('' + '/*') == 2:
+        for layer in models.layers:
+            if 'batch_normalization' not in layer.name:
+                layer.trainable = False
+            else:
+                print('Trainable lay: ', layer.name)
+        models.compile(optimizer='adam', loss=[weighted_dice_with_CE], metrics=[dice_coef])
+        print('Only finetune BN on target domain!')
+        # load target raw MR scans
+        all_src_data = read_from_nii(nii_path=target_path, need_resize=256, Hu_window='auto',
+                                     need_rotate=need_rotate, max_num=max_num, check_orientation=check_orientation)
+        all_src_data = np.expand_dims(all_src_data, -1)
+        all_label_data = np.zeros_like(all_src_data)  # create empty label matrix
+        # adaptation
+        models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # or 0.1
+                   callbacks=callbacks_list)
 
-    # del models
-
-    # no need if use callback_list to save automatically
+    # no need following codes if you have used callback_list earlier to save automatically
     if not os.path.exists(weight_path):
         os.makedirs(weight_path)
     models.save_weights(weight_path + '.hdf5')
 
     print('New model has trained and saved as:  ' + weight_path)
+
+    del models  # release RAM
 
     return weight_path  # return new weight path for load to infer
