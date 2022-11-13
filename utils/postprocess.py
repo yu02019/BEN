@@ -3,8 +3,8 @@
 Remove false positive small regions in segmentation results.
 
 """
-import numpy as np
 import os
+import numpy as np
 from glob import glob
 from skimage import measure
 from utils.load_data import get_itk_array, get_itk_image, write_itk_imageArray
@@ -18,7 +18,7 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
     :param return_nii: save to nii format.
     :return: None
     """
-    niilabel_path = glob(input_path + '/*')
+    niilabel_path = glob(input_path + '/*nii*')
     niilabel_path.sort()
 
     if output_path is None:
@@ -53,7 +53,7 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
 
         if return_nii:
             ref_nii = get_itk_image(name)
-            output_name = output_path + '/' + name.split('/')[-1]  # Note: Windows: name.split('\\')[-1]; Linux: name.split('/')[-1]
+            output_name = output_path + '/' + os.path.basename(name)  # Note: Windows: name.split('\\')[-1]; Linux: name.split('/')[-1]
             nii = nii.astype(float)
             write_itk_imageArray(nii, output_name, ref_nii)
             tag = tag + 1
@@ -64,3 +64,4 @@ def remove_small_objects(input_path='/*', output_path=None, return_nii=True):
 if __name__ == '__main__':
     remove_small_objects(input_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-DA', output_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-DA-post')
     remove_small_objects(input_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-ft', output_path=r'cross_domain/rat/pred-Rat-42d-2022-%1-ft-post')
+

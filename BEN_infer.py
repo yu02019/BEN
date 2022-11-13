@@ -34,10 +34,17 @@ if __name__ == '__main__':
                        check_orientation=args.check_orientation, is_mkdir=args.is_mkdir)
 
     ''' (Optional) Run post-processing '''
-    pass
+    from utils.postprocess import remove_small_objects
+    from utils.postprocess_crf import crf_2D
+
+    remove_small_objects(input_path=args.output, output_path=args.output)  # in-place rewrite
+    crf_2D(img_dir=args.input, predict_dir=args.output, output_folder=args.output)  # in-place rewrite
 
     ''' Generate visual report '''
-    # todo
-    pass
+    from utils.check_result import make_result_to_logs
+    from utils.check_html import make_logs_to_html
 
+    logs_folder = make_result_to_logs(input_folder=args.input, predict_folder=args.output, species='rodents')
+    make_logs_to_html(log_folder=logs_folder)  # HTML logs will be saved in this folder
 
+    print('Pipeline finished')
