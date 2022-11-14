@@ -192,7 +192,8 @@ def make_result_to_logs(input_folder, predict_folder, species):
     dataframe = pd.DataFrame(seg_metrics)
     dataframe.to_csv(logs_predict_folder + '/info.csv', index=False, mode='w')  # mode='a'
 
-    print('Logs saved!')
+    print('\n**********\t', 'Logs have been saved', '\t**********\n')
+
     return logs_predict_folder
 
 if __name__ == '__main__':

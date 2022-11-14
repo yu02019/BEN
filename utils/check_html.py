@@ -81,10 +81,12 @@ def make_logs_to_html(log_folder):
     # for pycharm/console:
     df.to_html(log_folder + '/Report.html', escape=False, formatters=format_dict, )
 
+    print('\n**********\t', 'HTML report has been generated', '\t**********\n')
+
     return None
 
 
 if __name__ == '__main__':
-    log_folder = r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\pred-pipe_30epoch_11090153\logs'
+    log_folder = r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\pred-topK\logs'
 
     make_logs_to_html(log_folder)

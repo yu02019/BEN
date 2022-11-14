@@ -22,17 +22,20 @@ Use the following command instead in Windows:
 
 """
 import os
-import cv2
-import sys
+# import cv2
+# import sys
 import numpy as np
 import pydensecrf.densecrf as dcrf  # in mrcnn
 from skimage.segmentation import relabel_sequential
 
 # 2022/11/12
+from tqdm import tqdm
 from glob import glob
 from myutils.read_all_data_from_nii_pipe import get_itk_image, get_itk_array, write_itk_imageArray
 from pydensecrf.utils import unary_from_softmax, create_pairwise_bilateral, create_pairwise_gaussian
 
+
+# import matplotlib.pyplot as plt
 
 # if len(sys.argv) != 4:
 #     print("Usage: python {} IMAGE ANNO OUTPUT".format(sys.argv[0]))
@@ -127,7 +130,10 @@ def batch_3D_crf(image, probs):
     return new_image
 
 
-def crf_2D(img_dir, predict_dir, output_folder):
+def crf_2D(img_dir='path/*.nii*', predict_dir='path/*.nii*', output_folder='pred-CRF'):
+    img_dir = glob(img_dir + '/*.nii*')
+    predict_dir = glob(predict_dir + '/*.nii*')
+
     scan_num = len(img_dir)
     for i in tqdm(range(scan_num)):
         filename = os.path.basename(predict_dir[i])
@@ -154,19 +160,9 @@ def crf_2D(img_dir, predict_dir, output_folder):
             post_slice[post_slice == 2] = 1
             predict_post[slice_id] = post_slice
 
-        ''' Method 2: 3D crf '''
-        # image = get_itk_array(img_dir[i])  # (128, 280, 200)
-        #
-        # ref = get_itk_image(predict_dir[i])
-        # predict = get_itk_array(predict_dir[i])  # (128, 280, 200)
-        # predict = np.expand_dims(predict, 0)  # (1, 128, 280, 200)
-        # probs = np.concatenate([np.zeros_like(predict), predict], axis=0)  # 2 class (不确定的类 + foreground)
-        #
-        # predict_post = batch_3D_crf(image, probs)
-
         # save to nii
         predict_post = predict_post.astype('float')
-        write_itk_imageArray(predict_post, out_name, ref)  # ref
+        write_itk_imageArray(predict_post, out_name, ref)
 
 
 def crf_3D(img_dir, predict_dir, output_dir):
@@ -174,11 +170,6 @@ def crf_3D(img_dir, predict_dir, output_dir):
     for i in tqdm(range(scan_num)):
         filename = os.path.basename(predict_dir[i])
         out_name = output_folder + '\\' + filename
-
-        # # 2D slice-level crf
-        # batch_crf(img_name=img_dir[i],
-        #           label_name=predict_dir[i],
-        #           out_name=out_name)
 
         # 3D crf
         image = get_itk_array(img_dir[i])  # (128, 280, 200)
@@ -197,13 +188,10 @@ def crf_3D(img_dir, predict_dir, output_dir):
 
 
 if __name__ == '__main__':
-    from tqdm import tqdm
-    import matplotlib.pyplot as plt
-
-    img_dir = glob(r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\train-all\*.nii*')
-    predict_dir = glob(r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\pred-pipe_30epoch_11090153\*.nii*')
+    img_dir = r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\train-all'
+    predict_dir = r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\pred-pipe_30epoch_11090153'
     output_folder = r'E:\New\Data_repo\doi_10.5061_dryad.1vhhmgqv8__v2\dataset\pred-CRF'
 
-    # main_3D(img_dir, predict_dir, output_folder)
+    # crf_3D(img_dir, predict_dir, output_folder)
 
     crf_2D(img_dir, predict_dir, output_folder)

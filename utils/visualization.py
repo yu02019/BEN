@@ -189,29 +189,6 @@ def plot_segmentation(raw, zeroshot, DA, task, hspace=-0.7, wspace=0.0, figsize=
     plt.show()
 
 
-def plot_segmentation_montage(raw, lung, lesion, state, patient_num=1, color_map='Reds'):
-    """
-    2022/11/13 Reference: https://github.com/Robin970822/DABC-Net-for-COVID-19/blob/master/utils/visualization.py
-    Displays the segmentation results (montage).
-    Parameters
-    ----------
-    raw: ndarray: shape like:(8, 512, 512) or list: [(8, 512, 512),(6, 512, 512)]
-    lung: segmentation results. Shape like:(8, 512, 512)
-    lesion:
-    state:
-    patient_num: int. 1 or 2.
-    color_map:
-    """
-
-    raw = raw - np.min(raw)
-    raw = raw * 1.0 / np.max(raw)
-
-    row1 = np.column_stack(raw)
-    # plt.imshow(row1,cmap='gray')
-    row2 = np.column_stack(lesion)
-    canvas = np.vstack((row1, row2))
-    plt.imshow(canvas, cmap='gray')
-
 if __name__ == '__main__':
     ''' cross species '''
     # raw, zeroshot, ft, DA, gt = load_slice_cross_species(raw_path=r'cross_domain\rat\src',

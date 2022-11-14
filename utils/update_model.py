@@ -148,7 +148,7 @@ def update_weight(train_data='', label_data='', target_data='',
         models.fit(all_src_data, all_label_data, batch_size=batch_size, epochs=epochs, validation_split=0,  # or 0.1
                    callbacks=callbacks_list)
 
-    ''' Step 2.5 (Optional): Update all layers with augmentation (Not recommended) '''
+    ''' Step 2 (Optional): Update all layers with augmentation (Not recommended) '''
     # if len(label_path) > 2:  # if label path is not empty. len('' + '/*') == 2
     #     for layer in models.layers:
     #         layer.trainable = True
@@ -165,7 +165,7 @@ def update_weight(train_data='', label_data='', target_data='',
     # )
     # # Fit the model using batch data with real-time augmentation
     # models.fit_generator(datagen.flow(all_src_data, all_label_data, batch_size=32),
-    #                     steps_per_epoch=len(all_src_data) / 32, epochs=100)  # epochs
+    #                     steps_per_epoch=len(all_src_data) / 32, epochs=200)  # epochs=epochs
 
     ''' Step 3: Freeze all layers except the BN layers and adapt them to raw MR scans from the target domain. (no labeling needed) '''
     if freeze and len(target_path) > 2:  # if target path is not empty. len('' + '/*') == 2:
