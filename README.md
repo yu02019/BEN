@@ -28,13 +28,14 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 
 (Old version is moved to 'doc' branch)
 
-| New features                                                                                                  | Location                           |
-|---------------------------------------------------------------------------------------------------------------|------------------------------------|
-| Add orientation detection                                                                                     | [utils folder](/utils)             |
-| Add utils functions (some visualization and postprocessing functions)                                         | [utils folder](/utils)             |
-| Optimize BEN pipeline.                                                                                        | BEN_DA.py, BEN_infer.py            |
-| Visual (segmentation quality) and volumetric (brain volume) reports in automatically generated HTML web page. | [utils folder](/utils)             |
-| Video tutorials                                                                                               | [Video tutorials](Video-tutorials) |
+| New features                                                                                                  | Location                                   |
+|---------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| Add orientation detection                                                                                     | [utils folder](/utils)                     |
+| Add utils functions (some visualization and postprocessing functions)                                         | [utils folder](/utils)                     |
+| Add Human-T1WI-HCP (baby) pretrained weight                                                                   | [dataset_release folder](/dataset_release) |
+| Optimize BEN pipeline.                                                                                        | BEN_DA.py, BEN_infer.py                    |
+| Visual (segmentation quality) and volumetric (brain volume) reports in automatically generated HTML web page. | [utils folder](/utils)                     |
+| Video tutorials                                                                                               | [Video tutorials](#Video-tutorials)        |
 
 
 ## Overview
@@ -168,11 +169,11 @@ python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
 To further validate BEN’s generalization, we have evaluated BEN on two new external public ex-vivo MRI datasets ([rTg4510 mouse](https://github.com/dama-lab/mouse-brain-atlas/tree/master/rTg4510/rTg4510_ex_vivo): 25 ex-vivo scans, and [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8): 15 ex-vivo scans). When only one label is used for BEN adaptation/retraining, impressive performance is achieved on both datasets, despite the fact that BEN was originally designed for in-vivo MRI data.
 
 
-| Dataset                                                                                            | Used label         | Description                                                                                                                                                                                                                | Automatically generated reports      | Video link                                  |
-|----------------------------------------------------------------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|---------------------------------------------|
-| [rTg4510 mouse](https://github.com/dama-lab/mouse-brain-atlas/tree/master/rTg4510/rTg4510_ex_vivo) | 1                  | Ex-vivo scans with obvious distortion and different orientations.                                                                                                                                                          | ![](fig/html_report_1.jpeg)          | Making subtitles and dubbing (Before 11.15) |
-| [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 1                  | Ex-vivo scans. There is no obvious gap between the brain and the skull borderlines, making the task difficult.                                                                                                             | ![](fig/html_report_2.jpeg)          | Making subtitles and dubbing (Before 11.15) |
-| [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 0 <br/>(zero-shot) | Ex-vivo scans. The domain gap exists in ex-vivo MRI data and in-vivo images in our training images could be so large that it compromises the performance. In this case, we suggest users add several labels to update BEN. | ![](fig/html_report_2_zeroshot.jpeg) | Making subtitles and dubbing (Before 11.15) |
+| Dataset                                                                                            | Used label         | Description                                                                                                                                                                                                                | Automatically generated reports      | Video link                              |
+|----------------------------------------------------------------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|-----------------------------------------|
+| [rTg4510 mouse](https://github.com/dama-lab/mouse-brain-atlas/tree/master/rTg4510/rTg4510_ex_vivo) | 1                  | Ex-vivo scans with obvious distortion and different orientations.                                                                                                                                                          | ![](fig/html_report_1.jpeg)          | [youtube](https://youtu.be/VZFNDh3MliA) |
+| [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 1                  | Ex-vivo scans. There is no obvious gap between the brain and the skull borderlines, making the task difficult.                                                                                                             | ![](fig/html_report_2.jpeg)          | [youtube](https://youtu.be/K0HYknQnCrI) |
+| [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 0 <br/>(zero-shot) | Ex-vivo scans. The domain gap exists in ex-vivo MRI data and in-vivo images in our training images could be so large that it compromises the performance. In this case, we suggest users add several labels to update BEN. | ![](fig/html_report_2_zeroshot.jpeg) | [youtube](https://youtu.be/K0HYknQnCrI) |
 
 
 # Resources
