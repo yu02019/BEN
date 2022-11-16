@@ -46,15 +46,15 @@ In detail, for the introduction of a new dataset, we suggest that the user do as
 
 Pretrained weight list:
 
-| Mouse            | Rat            | Marmoset           | Macaque           | Human                                          |
-|------------------|----------------|--------------------|-------------------|------------------------------------------------|
-| Mouse-T2WI-11.7T | Rat-T2WI-11.7T | Marmoset-T2WI-9.4T | Macaque-T1WI-4.7T | Human-T1WI-3T <br/>(trained on three datasets) |
-| Mouse-T2WI-9.4T  | Rat-T2WI-9.4T  | Marmoset-EPI-9.4T  | Macaque-T1WI-3T   | Human-T1WI-ABCD-3T                             |
-| Mouse-T2WI-7T    | Rat-T2WI-7T    |                    | Macaque-T1WI-1.5T | Human-T1WI-UKB-3T                              |
-| Mouse-EPI-11.7T  | Rat-EPI-9.4T   |                    |                   | Human-T1WI-ZIB-3T                              |
-| Mouse-EPI-9.4T   |                |                    |                   | Human-T1WI-HCP (Baby. Continuously updating)   |
-| Mouse-SWI-11.7T  |                |                    |                   |                                                |
-| Mouse-ASL-11.7T  |                |                    |                   |                                                |
+| Mouse            | Rat            | Marmoset           | Macaque           | Human                                                                                                       |
+|------------------|----------------|--------------------|-------------------|-------------------------------------------------------------------------------------------------------------|
+| Mouse-T2WI-11.7T | Rat-T2WI-11.7T | Marmoset-T2WI-9.4T | Macaque-T1WI-4.7T | Human-T1WI-3T <br/>(trained on three datasets)                                                              |
+| Mouse-T2WI-9.4T  | Rat-T2WI-9.4T  | Marmoset-EPI-9.4T  | Macaque-T1WI-3T   | Human-T1WI-ABCD-3T                                                                                          |
+| Mouse-T2WI-7T    | Rat-T2WI-7T    |                    | Macaque-T1WI-1.5T | Human-T1WI-UKB-3T                                                                                           |
+| Mouse-EPI-11.7T  | Rat-EPI-9.4T   |                    |                   | Human-T1WI-ZIB-3T                                                                                           |
+| Mouse-EPI-9.4T   |                |                    |                   | [Human-T1WI-HCP (Baby)](https://drive.google.com/file/d/1NtRjX70N2xvnDB2Hj2Q3AhYag6HlT9FL/view?usp=sharing) |
+| Mouse-SWI-11.7T  |                |                    |                   |                                                                                                             |
+| Mouse-ASL-11.7T  |                |                    |                   |                                                                                                             |
 
 
 (T2WI: Anatomical MRI; EPI: Functional MRI.)

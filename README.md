@@ -159,10 +159,14 @@ The target domain data folder looks like this: (Download data from this reposito
 
 ## Try your data
 
-Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing).
+Feel free to try your data or deploy BEN to your preprocessing pipeline. Details can be found in [notebook](https://colab.research.google.com/drive/1tfPfHg0Artjb2Ob8F_l9oOWb8u3y0lzi?usp=sharing) and video tutorials.
+Pretrained weights can be found in [dataset_release](/dataset_release).
 
 ```shell
-python BEN_infer.py -i input_folder -o output_folder -m model_weight_path
+# Update BEN (domain adaptation)
+python BEN_DA.py -t train_folder -l label_folder -r raw_image_folder -weight pretrained_weight_path -prefix new_model_name -check check_orientation
+# Run inference
+python BEN_infer.py -i input_folder -o output_folder -weight model_weight_path -check check_orientation
 ```
 
 ## Video tutorials
