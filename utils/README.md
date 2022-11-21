@@ -2,16 +2,16 @@
 
 ## Plug-and-play functions for pre-/post-processing
 
-- [x] Orientation detection 
+- [x] Orientation detection (**Note:** if you want to run MR scans on the original orientation, don't set "-check" parameter in commands)
 - [x] Top-K largest connected region selection 
 - [x] todo: update CRF before November 12th.
 
-| Name                                                                     | File               | Description                                                                                                                                        | Update date |
-|--------------------------------------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| Orientation detection                                                    | load_data.py       | Check the orientation of input MR scans and automatically correct them during runtime. The output files will keep the original user's orientation. | 2022/11     |
-| remove_small_objects_v1                                                  | postprocess.py     | Remove small objects after brain extraction.                                                                                                       |             |
-| remove_small_objects_v2 <br/> (Top-K largest connected region selection) | postprocess.py     | Remove small objects after brain extraction.                                                                                                       | 2022/11     |
-| Conditional Random Field (CRF)                                           | postprocess_crf.py | Optimize segmentation. (provide 2D and 3D version of CRF)                                                                                          | 2022/11     |
+| Name                                                                     | File                                     | Description                                                                                                                                         | Update date |
+|--------------------------------------------------------------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| Orientation detection                                                    | load_data.py <br/>check_reorient_sitk.py | Check the orientation of input MR scans and automatically correct them during runtime. The output files will keep the original user's orientation.  | 2022/11     |
+| remove_small_objects_v1                                                  | postprocess.py                           | Remove small objects after brain extraction.                                                                                                        | 2022/11     |
+| remove_small_objects_v2 <br/> (Top-K largest connected region selection) | postprocess.py                           | Remove small objects after brain extraction.                                                                                                        | 2022/11     |
+| Conditional Random Field (CRF)                                           | postprocess_crf.py                       | Optimize segmentation. (provide 2D and 3D version of CRF)                                                                                           | 2022/11     |
 
 ## Running log for quick inspection
 
@@ -33,3 +33,6 @@
 3. -[ ] Provide one super unified pretrained weight. In clinical practice, users usually didn't care about networks were pretrained on one or multiple source domains. 
 Moreover, we do have multiple domain datasets.
 Obviously, pretraining on multi-source domains will further improve the generalizability of the network.
+4. -[ ] We are planning to create an open data and open-source web repository, ‘OpenBEN’, to share the data, computer codes and trained models, which will enable scientists everywhere to query and further improve automatic deployment of these datasets.
+Currently, we can use Google Drive as an alternative for sharing such codes and data. We will also acknowledge any contribution to BEN!
+

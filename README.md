@@ -30,12 +30,15 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 
 | New features                                                                                                  | Location                                   |
 |---------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| Add orientation detection                                                                                     | [utils folder](/utils)                     |
+| Add orientation detection (If you)                                                                            | [utils folder](/utils)                     |
 | Add utils functions (some visualization and postprocessing functions)                                         | [utils folder](/utils)                     |
 | Add Human-T1WI-HCP (baby) pretrained weight                                                                   | [dataset_release folder](/dataset_release) |
 | Optimize BEN pipeline.                                                                                        | BEN_DA.py, BEN_infer.py                    |
 | Visual (segmentation quality) and volumetric (brain volume) reports in automatically generated HTML web page. | [utils folder](/utils)                     |
 | Video tutorials                                                                                               | [Video tutorials](#Video-tutorials)        |
+
+### Near future plans in BEN v0.3
+Please refer to [list](/utils#todo).
 
 
 ## Overview
@@ -179,6 +182,7 @@ To further validate BEN’s generalization, we have evaluated BEN on two new ext
 | [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 1                  | Ex-vivo scans. There is no obvious gap between the brain and the skull borderlines, making the task difficult.                                                                                                             | ![](fig/html_report_2.jpeg)          | [youtube](https://youtu.be/K0HYknQnCrI) |
 | [C57BL/6 mouse](https://datadryad.org/stash/dataset/doi:10.5061/dryad.1vhhmgqv8)                   | 0 <br/>(zero-shot) | Ex-vivo scans. The domain gap exists in ex-vivo MRI data and in-vivo images in our training images could be so large that it compromises the performance. In this case, we suggest users add several labels to update BEN. | ![](fig/html_report_2_zeroshot.jpeg) | [youtube](https://youtu.be/K0HYknQnCrI) |
 
+Pretrained weight used in tutorials can download from [Google Drive](https://drive.google.com/file/d/1K5qIe6o8uG7cw_Uu0H3aB0FE40YXb9Hp/view?usp=share_link)
 
 # Resources
 
