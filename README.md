@@ -18,7 +18,7 @@ See also:
 <img src="https://github.com/yu02019/MouseGAN-pp/blob/main/fig/logo.png" width = "293" height = "100" alt="MouseGAN++ logo" align=center /> | [Github project link](https://github.com/yu02019/MouseGAN-pp)
 
 ```
-"Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain." Under review (2022)
+Z. Yu, X. Han, S. Zhang, J. Feng, T. Peng and X. -Y. Zhang, "MouseGAN++: Unsupervised Disentanglement and Contrastive Representation for Multiple MRI Modalities Synthesis and Structural Segmentation of Mouse Brain," in IEEE Transactions on Medical Imaging, 2022, doi: 10.1109/TMI.2022.3225528.
 ```
 
 ---
