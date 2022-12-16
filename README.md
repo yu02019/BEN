@@ -30,7 +30,7 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 
 | New features                                                                                                  | Location                                   |
 |---------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| Add orientation detection (If you)                                                                            | [utils folder](/utils)                     |
+| Add orientation detection (**Note:** if you want to run MR scans on the original orientation, don't set "-check" parameter in commands)                                                                            | [utils folder](/utils)                     |
 | Add utils functions (some visualization and postprocessing functions)                                         | [utils folder](/utils)                     |
 | Add Human-T1WI-HCP (baby) pretrained weight                                                                   | [dataset_release folder](/dataset_release) |
 | Optimize BEN pipeline.                                                                                        | BEN_DA.py, BEN_infer.py                    |
@@ -40,6 +40,9 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 ### Near future plans in BEN v0.3
 Please refer to [list](/utils#todo).
 
+### Behind the work
+Coincidentally, the motivation of BEN is somewhat consistent with [Cellpose v2](https://www.nature.com/articles/s41592-022-01664-3#Sec5).
+BEN tries to quickly develop a customized model specific to each user application with the help of the AdaBN module.
 
 ## Overview
 🚀 Quick start to use BEN or replicate our experiments in 5 minutes!
