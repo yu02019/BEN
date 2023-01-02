@@ -41,7 +41,7 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 Please refer to [list](/utils#todo).
 
 ### Behind the work
-Coincidentally, the motivation of BEN is somewhat consistent with [Cellpose v2](https://www.nature.com/articles/s41592-022-01664-3#Sec5).
+Coincidentally, the motivation of BEN's training strategy is somewhat consistent with [Cellpose v2](https://www.nature.com/articles/s41592-022-01664-3#Sec5).
 BEN tries to quickly develop a customized model specific to each user application with the help of the AdaBN module.
 
 ## Overview
@@ -219,12 +219,14 @@ The details can be found in this [folder](/dataset_release).
 If you find our work / datasets / pretrained models useful for your research, please consider citing:
 
 ```bibtex
-@article{yu2022ben,
-  title={BEN: a generalizable Brain Extraction Net for multimodal MRI data from rodents, nonhuman primates, and humans},
+@article{yu2022generalizable,
+  title={A generalizable brain extraction net (BEN) for multimodal MRI data from rodents, nonhuman primates, and humans},
   author={Yu, Ziqi and Han, Xiaoyang and Xu, Wenjing and Zhang, Jie and Marr, Carsten and Shen, Dinggang and Peng, Tingying and Zhang, Xiao-Yong and Feng, Jianfeng},
-  journal={bioRxiv},
+  journal={Elife},
+  volume={11},
+  pages={e81217},
   year={2022},
-  publisher={Cold Spring Harbor Laboratory}
+  publisher={eLife Sciences Publications Limited}
 }
 ```
 
