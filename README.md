@@ -9,8 +9,9 @@
 <hr />
 
 
-### [Paper](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [Video tutorials](#Video-tutorials) 
+### [Paper](https://elifesciences.org/articles/81217) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [Video tutorials](#Video-tutorials) 
 
+[//]: # [biorxiv](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract)
 
 ![](fig/BEN-workflow.png)
 
@@ -136,7 +137,7 @@ The target domain data folder looks like this: (Download data from this reposito
 
 1. Modality: T2WI -> EPI
 2. For this exemplar domain adaptation (DA) task, No label is used (zero-shot).
-3. From top raw to the third raw: Raw image, Baseline result, BEN's result.
+3. From top row to the third row: Raw image, Baseline result, BEN's result.
 
    ![Alt text](fig/cross-modality.png "fig.1")
 
@@ -144,7 +145,7 @@ The target domain data folder looks like this: (Download data from this reposito
 
 1. MR scanner with different field strengths: 11.7 T -> 7 T
 2. For this exemplar domain adaptation (DA) task, No label is used (zero-shot).
-3. From top raw to the third raw: Raw image, Baseline result, BEN's result.
+3. From top row to the third row: Raw image, Baseline result, BEN's result.
 
    ![](fig/cross-field.png)
 
@@ -153,7 +154,7 @@ The target domain data folder looks like this: (Download data from this reposito
 1. Species: Mouse -> Rat
 2. For this exemplar domain adaptation (DA) task, only ONE label is used.
 3. The segmentation results are shown in red, the ground truth are shown in orange.
-4. From top raw to the fifth raw: Raw image, Zero-shot (0 label used), finetune (1 label used), BEN's result (1 label
+4. From top row to the fifth row: Raw image, Zero-shot (0 label used), finetune (1 label used), BEN's result (1 label
    used), Ground truth.
 
    ![](fig/cross-species.png)
