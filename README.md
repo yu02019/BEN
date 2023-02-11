@@ -11,7 +11,7 @@
 
 ### [Paper](https://elifesciences.org/articles/81217) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [Video tutorials](#Video-tutorials) 
 
-[//]: # [biorxiv](https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract)
+[//]: # (https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract)
 
 ![](fig/BEN-workflow.png)
 
