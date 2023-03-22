@@ -379,13 +379,13 @@ def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/
                     write_itk_imageArray(total_data, save_path + os.path.split(name)[-1],
                                          nii_ref)  # Windows : '\\', ( or '/', easily confusable when using Linux PC）
                 else:
-                    # # v1
-                    # new_nii = itk.GetImageFromArray(total_data)
-                    # new_nii.SetDirection(nii_ref_reorient.GetDirection())
-                    # new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
-                    # write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1])
+                    # v1
+                    new_nii = itk.GetImageFromArray(total_data)
+                    new_nii.SetDirection(nii_ref_reorient.GetDirection())
+                    new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
+                    write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1])
                     # v2
-                    write_itk_imageArray(total_data, save_path + os.path.split(name)[-1], nii_ref, orientation=check_orientation)
+                    # write_itk_imageArray(total_data, save_path + os.path.split(name)[-1], nii_ref, orientation=check_orientation)
 
         else:  # if using Linux
             if shape_list:
@@ -395,13 +395,13 @@ def save_pred_to_nii(pred=None, save_path=r'E:\Lung\covid_data0424\label_V1pred/
                 if check_orientation is None:
                     write_itk_imageArray(total_data, save_path + name.split('/')[-1], nii_ref)
                 else:
-                    # # v1
-                    # new_nii = itk.GetImageFromArray(total_data)
-                    # new_nii.SetDirection(nii_ref_reorient.GetDirection())
-                    # new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
-                    # write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1], nii_ref)
-                    # v2
-                    write_itk_imageArray(total_data, save_path + os.path.split(name)[-1], nii_ref, orientation=check_orientation)
+                    # v1
+                    new_nii = itk.GetImageFromArray(total_data)
+                    new_nii.SetDirection(nii_ref_reorient.GetDirection())
+                    new_nii_to_Original_orientation = itk.DICOMOrient(new_nii, original_orientation)
+                    write_itk_image(new_nii_to_Original_orientation, save_path + os.path.split(name)[-1])
+                    # # v2
+                    # write_itk_imageArray(total_data, save_path + os.path.split(name)[-1], nii_ref, orientation=check_orientation)
 
         tag = tag + slices
 
