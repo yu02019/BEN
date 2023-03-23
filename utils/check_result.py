@@ -7,6 +7,7 @@ visual inspection (generate video logs)
 """
 import argparse
 import os
+import time
 from glob import glob
 from tqdm import tqdm
 import SimpleITK as sitk
@@ -107,7 +108,15 @@ def plot_segmentation_montage(_raw, _pred, _raw_pred=None, color_map='gray', plo
     return None
 
 
-def make_result_to_logs(input_folder, predict_folder, species):
+def make_result_to_logs(input_folder, predict_folder, species='rodent', orientation=None):
+    """
+
+    :param input_folder:
+    :param predict_folder:
+    :param species:
+    :param orientation: When this parameter is set, the parameter 'species' is suppressed.
+    :return:
+    """
     if predict_folder is not None:
         if not os.path.exists(predict_folder):
             os.makedirs(predict_folder)
@@ -115,10 +124,13 @@ def make_result_to_logs(input_folder, predict_folder, species):
         warnings.warn('input_folder and predict_folder are consistent, input files will be overwritten!')
         input('Overwrite input files? Press any key to continue...')
 
-    if species == 'rodents' or species == 'rodent':  # for rodents
-        orientation = 'RIA'  # orient to RIA
-    else:  # for NHPs
-        orientation = 'RPI'
+    if orientation is not None:
+        pass
+    else:
+        if species == 'rodents' or species == 'rodent':  # for rodents
+            orientation = 'RIA'  # orient to RIA
+        else:  # for NHPs
+            orientation = 'RPI'
 
     logs_predict_folder = predict_folder + '/logs'
     if not os.path.exists(logs_predict_folder):
@@ -202,6 +214,8 @@ if __name__ == '__main__':
     parser.add_argument("-i", dest='input_folder', required=True, type=str, help="input image folder")
     parser.add_argument("-predict", dest='predict_folder', default=None, type=str, help="predict image folder")
     parser.add_argument("-s", dest='species', default='rodents', type=str, help="species of input images")
+    parser.add_argument("-check", dest='check_orientation',
+                        help="Check input orientation. None for skipping. 'RIA' for rodents and 'RPI' for NHPs")
 
     args = parser.parse_args()
 
@@ -209,5 +223,6 @@ if __name__ == '__main__':
     input_folder = args.input_folder
     predict_folder = args.predict_folder
     species = args.species
+    check_orientation = args.check_orientation
 
-    make_result_to_logs(input_folder, predict_folder, species)
+    make_result_to_logs(input_folder, predict_folder, species, check_orientation)

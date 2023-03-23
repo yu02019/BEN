@@ -45,7 +45,7 @@ if __name__ == '__main__':
     from utils.check_result import make_result_to_logs
     from utils.check_html import make_logs_to_html
 
-    logs_folder = make_result_to_logs(input_folder=args.input, predict_folder=args.output, species='rodents')
+    logs_folder = make_result_to_logs(input_folder=args.input, predict_folder=args.output, orientation=args.check_orientation)
     make_logs_to_html(log_folder=logs_folder)  # HTML logs will be saved in this folder
 
     print('\n**********\t', 'Pipeline finished.', '\t**********\n')
