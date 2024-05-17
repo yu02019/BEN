@@ -72,6 +72,7 @@ def inference_pipeline(nii_filename='',
     tf.keras.backend.clear_session()
 
     weight = 'model_NLunet_epoch20_12131942.hdf5' if not weight else weight
+    weight += '' if weight.endswith('.hdf5') else '.hdf5'
 
     models = backbone_network(256, 256, pretrained_weights=weight, BN_list=BN_list, droprate=droprate, NL_att=NL_att)
 
