@@ -9,7 +9,15 @@
 <hr />
 
 
-### [Paper](https://elifesciences.org/articles/81217) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [Video tutorials](#Video-tutorials) 
+### [Paper](https://elifesciences.org/articles/81217) | [nnBEN (nnUNet v2)](#nnben-nnunet-v2-recommended-for-new-setups) | [Feature](#feature) | [Replicate demo](#replicate-demo) | [MRI data release](/dataset_release) | [Pretrained weight](/dataset_release) | [Interface](/interface) | [Contributing to BEN](/dataset_release) | [Documentation](https://ben-docs.readthedocs.io/en/latest/)  | [Contents](#Quick-Start-Contents) | [Video tutorials](#Video-tutorials) 
+
+**BEN** in this repository is the **original TensorFlow 1.15 / Keras** release. We keep it for **paper replication**, historical Colab-style tutorials, and exact reproduction of earlier experiments. If you are **setting up on a new machine** or want a **PyTorch + nnUNet v2** pipeline, please start from the successor project **nnBEN**. Weights and checkpoints are not interchangeable between this repo and nnBEN.
+
+### Why we offer nnBEN
+
+- The **legacy** stack depends on **TensorFlow 1.15**, which is increasingly hard to maintain; on **recent NVIDIA GPUs / drivers** it is often unsupported or difficult to install.
+- **nnBEN** uses **PyTorch + nnUNet v2**, aligning with the modern GPU ecosystem and widely used segmentation tooling.
+- That makes **reproduction**, **extensions**, and **community collaboration** easier for teams already standardized on nnUNet.
 
 [//]: # (https://www.biorxiv.org/content/10.1101/2022.05.25.492956v2.abstract)
 
@@ -38,8 +46,6 @@ We release BEN (version 0.2) during November based on the reviewers' suggestions
 | Visual (segmentation quality) and volumetric (brain volume) reports in automatically generated HTML web page. | [utils folder](/utils)                     |
 | Video tutorials                                                                                               | [Video tutorials](#Video-tutorials)        |
 
-### Near future plans in BEN v0.3
-Please refer to [list](/utils#todo).
 
 ### Behind the work
 Coincidentally, the motivation of BEN's training strategy is somewhat consistent with [Cellpose v2](https://www.nature.com/articles/s41592-022-01664-3#Sec5).
@@ -84,6 +90,10 @@ The details can be found in this [folder](/dataset_release).
 
 Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) or [video tutorials](#video-tutorials) for installation, tutorials and more.
 
+nnBEN :
+* See the new repository: [TODO](#nnben-nnunet-v2-recommended-for-new-setups) (recommended for new setups; built on PyTorch and nnUNet v2)
+
+Legacy BEN (TensorFlow 1.15) :
 * [Installation](#installation)
 * [Quick Start / Tutorial](#quick-start)
     + [Cross modalities](#cross-modality) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/14NWqdbkpsdt0cS4-SLCvcDmHLU05UlmV?usp=sharing)
@@ -98,7 +108,21 @@ Visit our [documentation](https://ben-docs.readthedocs.io/en/latest/) or [video 
   * [Contributing to BEN](/dataset_release)
 
 
-## Installation
+## nnBEN (nnUNet v2, recommended for new setups)
+
+**nnBEN** is the **nnUNet v2**–based continuation of BEN for training and inference on **modern GPU / PyTorch** stacks. It lives in a **separate repository** so releases can track nnUNet v2 without breaking this legacy tree.
+
+| | **This repository (BEN)** | **nnBEN** |
+|--|---------------------------|-----------|
+| **Stack** | TensorFlow 1.15, Keras | PyTorch, nnUNet v2 |
+| **Best for** | Exact replication, legacy Colab / tutorials | New hardware, nnUNet ecosystem integration |
+| **Weights** | Keras/TF checkpoints in this project | nnUNet checkpoints **only** from the nnBEN repo |
+
+**Repository:** **TODO** 
+
+---
+
+## Installation (legacy: TensorFlow 1.15)
 
 An Nvidia GPU is needed for faster inference (less than 1 sec/scan on 1080ti gpu).
 
@@ -126,7 +150,7 @@ The target domain data folder looks like this: (Download data from this reposito
 
 <img src="./fig/folder_tree.png" width = "320" height = "230" alt="folder_tree" align=center/>
 
-## Quick Start
+## Quick Start (legacy pipeline)
 
 * All the undermentioned results can be repeated via our tutorial Notebook.
 * New weight will be saved independently for further customized application.
